@@ -1,0 +1,14 @@
+{
+  "name": "needfunc",
+  "version": "1.0.0",
+  "description": "\"필요할것 같은 기능들 만들어 놓기\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "KimInteger"
+  ],
+  "author": "KimInteger",
+  "license": "MIT"
+}

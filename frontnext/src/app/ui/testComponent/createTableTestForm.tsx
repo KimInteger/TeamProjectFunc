@@ -139,13 +139,16 @@ const fetchData = async ({
   columns: { name: string; type: string }[];
 }): Promise<boolean> => {
   try {
-    const response = await fetch('http://localhost:8000/createTable', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'http://localhost:8000/searchData/createTable',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ table_name, columns }),
       },
-      body: JSON.stringify({ table_name, columns }),
-    });
+    );
 
     if (!response.ok) {
       return false;

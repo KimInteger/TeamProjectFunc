@@ -29,7 +29,7 @@ export async function searchData(): Promise<string | ErrorResponse> {
 
     // 데이터 반환 (JSON 문자열로)
     return data;
-  } catch (error: any) {
+  } catch (error) {
     // 에러 발생 시 에러 메시지와 코드 반환
     const errorResponse: ErrorResponse = {
       errorCode: error instanceof Error ? 500 : 400,

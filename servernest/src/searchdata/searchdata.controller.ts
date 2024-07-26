@@ -69,4 +69,48 @@ export class SearchDataController {
       );
     }
   }
+
+  @Post('createTable')
+  async createTable(
+    @Body()
+    sendData: {
+      table_name: string;
+      columns: { name: string; type: string }[];
+    },
+  ) {
+    const externalApiUrl = 'http://localhost:8080/searchData/createTable';
+
+    try {
+      const response = await fetch(externalApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      });
+
+      if (!response.ok) {
+        throw new HttpException(
+          'Failed to fetch data from external API',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      const result = await response.json();
+
+      if (typeof result !== 'boolean') {
+        throw new HttpException(
+          'Invalid response from external API',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      return result;
+    } catch (error) {
+      throw new HttpException(
+        'Failed to process request',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 }
